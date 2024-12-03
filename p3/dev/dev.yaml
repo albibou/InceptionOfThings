@@ -29,8 +29,8 @@ spec:
       labels:
         app: app
     spec:
-    containers:
-    - name: app
-      image: wil42/playground:v2
-      ports:
-      - containerPort: 8888 
+      containers:
+      - name: app
+        image: wil42/playground:v2
+        ports:
+        - containerPort: 8888
