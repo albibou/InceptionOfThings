@@ -32,8 +32,7 @@ k3d cluster create dev-cluster
 kubectl create namespace argocd
 kubectl create namespace dev
 
-kubectl create configmap -n dev app-html --from-file '../dev/index.html'
-kubectl apply -n dev -f '../dev/dev.yaml'
+#kubectl create configmap -n dev app-html --from-file '../dev/index.html'
 
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 sleep 10
@@ -50,6 +49,8 @@ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.pas
 echo ""
 
 kubectl apply -n argocd -f ../confs/ingress.yaml
-kubectl apply -n argocd -f ../confs/project.yaml
+#kubectl apply -n argocd -f ../confs/project.yaml
+kubectl apply -n argocd -f ../confs/projecttest.yaml
+#kubectl apply -n dev -f '../dev/dev.yaml'
 
 kubectl port-forward svc/argocd-server -n argocd 8080:443
