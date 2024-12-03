@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app
+  labels:
+    app: app
+spec:
+  project: default
+  source:
+    repoURL: "https://github.com/XanaCo/Inception-of-Things.git"
+    targetRevision: IoT_al
+    path: p3/dev 
+    directory:
+      recurse: true
+  destination:
+    namespace: dev
+    server: https://kubernetes.default.svc
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: true
