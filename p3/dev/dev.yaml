@@ -7,8 +7,8 @@ metadata:
     app: app
 spec:
   ports:
-  - port: 80
-    targetPort: 80
+  - port: 8888
+    targetPort: 8888
     protocol: TCP
   selector:
     app: dev
@@ -29,15 +29,9 @@ spec:
       labels:
         app: app
     spec:
-      containers:
-      - name: app
-        image: nginx
-        ports:
-        - containerPort: 80
-        volumeMounts:
-        - name: dev-volume
-          mountPath: /usr/share/nginx/html
-      volumes:
-      - name: dev-volume
-        configMap:
-          name: app-html
+    containers:
+    - name: app
+    image: wil42/playground:v2
+    ports:
+    - containerPort: 8888
+      
